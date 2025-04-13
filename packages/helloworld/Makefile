@@ -18,11 +18,16 @@ define Package/helloworld
     SECTION:=utils
     CATEGORY:=Utilities
     TITLE:=A simple Hello World program
+    DEPENDS:=+libc
 endef
 
 # 包的描述
 define Package/helloworld/description
     This is a minimal example of a custom OpenWrt package.
+    Features:
+    - Prints "Hello World" to console
+    - Demonstrates basic package structure
+    - Easy to modify and extend
 endef
 
 # 编译逻辑（编译 helloworld.c 为可执行文件）
@@ -32,7 +37,8 @@ define Build/Prepare
 endef
 
 define Build/Compile
-    $(TARGET_CC) $(TARGET_CFLAGS) -o $(PKG_BUILD_DIR)/helloworld $(PKG_BUILD_DIR)/helloworld.c
+    $(TARGET_CC) $(TARGET_CFLAGS) $(TARGET_LDFLAGS) -Wall -O2 \
+        -o $(PKG_BUILD_DIR)/helloworld $(PKG_BUILD_DIR)/helloworld.c
 endef
 
 # 安装逻辑（将可执行文件复制到固件中）
