@@ -22,10 +22,10 @@ define Package/helloworld-rust/config
 endef
 
 define Package/helloworld-rust
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Rust Hello World
-  DEPENDS:=+libc +libstdcpp
+	SECTION:=utils
+	CATEGORY:=Utilities
+	TITLE:=Rust Hello World
+	DEPENDS:=+libc +libstdcpp
 endef
 
 define Package/helloworld-rust/description
